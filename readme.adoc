@@ -1,0 +1,3 @@
+= Json4k Jackson
+
+Jackson implementation of the Json4k API.

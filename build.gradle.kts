@@ -63,9 +63,9 @@ publishing {
       from(components["java"])
 
       pom {
-        name.set("Json4k")
-        description.set("Json creation abstraction for Kotlin.")
-        url.set("https://github.com/Foxcapades/Json4k")
+        name.set("Json4k-Jackson")
+        description.set("Jackson implementation of Json4k")
+        url.set("https://github.com/Foxcapades/Json4k-Jackson")
         developers {
           developer {
             id.set("epharper")
@@ -81,9 +81,9 @@ publishing {
           }
         }
         scm {
-          connection.set("scm:git:git://github.com/Foxcapades/Json4k.git")
-          developerConnection.set("scm:git:ssh://github.com/Foxcapades/Json4k.git")
-          url.set("https://github.com/Foxcapades/Json4k")
+          connection.set("scm:git:git://github.com/Foxcapades/Json4k-Jackson.git")
+          developerConnection.set("scm:git:ssh://github.com/Foxcapades/Json4k-Jackson.git")
+          url.set("https://github.com/Foxcapades/Json4k-Jackson")
         }
       }
     }
