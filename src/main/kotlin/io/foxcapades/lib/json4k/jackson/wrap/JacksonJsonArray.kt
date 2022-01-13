@@ -119,7 +119,6 @@ internal class JacksonJsonArray(raw: ArrayNode)
   override fun addIf(condition: Bool, vararg values: Bool) =
     also { if (condition) values.forEach { raw.add(if (it) BooleanNode.TRUE else BooleanNode.FALSE) } }
 
-
   override fun addIf(condition: Bool, vararg values: Byte) =
     also { if (condition) values.forEach { raw.add(ShortNode(it.toShort())) } }
 
@@ -147,7 +146,6 @@ internal class JacksonJsonArray(raw: ArrayNode)
   override fun addIf(condition: Bool, vararg values: BigInt) =
     also { if (condition) values.forEach { raw.add(BigIntegerNode(it)) } }
 
-
   override fun addIf(condition: Bool, vararg values: Float) =
     also { if (condition) values.forEach { raw.add(FloatNode(it)) } }
 
@@ -156,7 +154,6 @@ internal class JacksonJsonArray(raw: ArrayNode)
 
   override fun addIf(condition: Bool, vararg values: BigDec) =
     also { if (condition) values.forEach { raw.add(DecimalNode(it)) } }
-
 
   override fun addIf(condition: Bool, vararg values: String) =
     also { if (condition) values.forEach { raw.add(TextNode(it)) } }
