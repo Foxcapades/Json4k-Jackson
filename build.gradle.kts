@@ -16,7 +16,7 @@ repositories {
 dependencies {
   implementation(kotlin("stdlib"))
   implementation(kotlin("stdlib-jdk8"))
-  implementation("io.foxcapades.lib:json4k:1.0.2")
+  implementation("io.foxcapades.lib:json4k:1.0.3")
   implementation("com.fasterxml.jackson.core:jackson-databind:2.13.1")
 
 
