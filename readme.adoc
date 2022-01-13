@@ -1,3 +1,4 @@
 = Json4k Jackson
 
-Jackson implementation of the Json4k API.
+https://github.com/FasterXML/jackson[Jackson] implementation of the
+https://github.com/Foxcapades/Json4k[Json4k] API.
