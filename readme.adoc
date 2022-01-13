@@ -1,4 +1,8 @@
 = Json4k Jackson
 
+image:https://img.shields.io/badge/jvm-1.8-red[]
+image:https://img.shields.io/badge/kotlin-1.6.10-green[]
+image:https://img.shields.io/maven-central/v/io.foxcapades.lib/json4k-jackson[Maven Central, link="https://search.maven.org/artifact/io.foxcapades.lib/json4k-jackson"]
+
 https://github.com/FasterXML/jackson[Jackson] implementation of the
 https://github.com/Foxcapades/Json4k[Json4k] API.
