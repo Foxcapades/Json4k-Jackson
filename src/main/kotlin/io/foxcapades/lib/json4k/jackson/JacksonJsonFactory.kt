@@ -1,11 +1,13 @@
 package io.foxcapades.lib.json4k.jackson
 
+import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.databind.node.ArrayNode
-import com.fasterxml.jackson.databind.node.ObjectNode
+import com.fasterxml.jackson.databind.node.*
 import io.foxcapades.lib.json4k.*
 import io.foxcapades.lib.json4k.JsonNumber
 import io.foxcapades.lib.json4k.jackson.wrap.*
+import java.io.InputStream
+import java.io.Reader
 import java.math.BigDecimal
 import java.math.BigInteger
 
@@ -61,4 +63,29 @@ class JacksonJsonFactory : JsonFactory {
 
   override fun newString(value: String): JsonString =
     JacksonJsonString(value.toJson())
+
+  override fun deserialize(stream: InputStream) =
+    sortDeserialize(mapper.readTree(stream))
+
+  override fun deserialize(reader: Reader) =
+    sortDeserialize(mapper.readTree(reader))
+
+  override fun deserialize(string: String) =
+    sortDeserialize(mapper.readTree(string))
+
+  private inline fun sortDeserialize(tmp: JsonNode): JsonElement {
+    return when (tmp.nodeType) {
+      JsonNodeType.ARRAY   -> JacksonJsonArray(tmp as ArrayNode)
+      JsonNodeType.BINARY  -> JacksonJsonBinary(tmp as BinaryNode)
+      JsonNodeType.BOOLEAN -> JacksonJsonBoolean(tmp as BooleanNode)
+      JsonNodeType.NULL    -> JacksonJsonNull()
+      JsonNodeType.NUMBER  -> when {
+        tmp.isIntegralNumber -> JacksonJsonBigInt(BigIntegerNode(tmp.bigIntegerValue()))
+        else                 -> JacksonJsonBigDec(DecimalNode(tmp.decimalValue()))
+      }
+      JsonNodeType.OBJECT  -> JacksonJsonObject(tmp as ObjectNode)
+      JsonNodeType.STRING  -> JacksonJsonString(tmp as TextNode)
+      else                 -> throw IllegalStateException()
+    }
+  }
 }
