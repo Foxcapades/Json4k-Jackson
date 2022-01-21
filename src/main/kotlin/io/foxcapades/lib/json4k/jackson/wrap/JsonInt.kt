@@ -1,6 +1,7 @@
 package io.foxcapades.lib.json4k.jackson.wrap
 
 import com.fasterxml.jackson.databind.node.NumericNode
+import io.foxcapades.lib.json4k.Json
 import io.foxcapades.lib.json4k.JsonInteger
 import io.foxcapades.lib.json4k.JsonNumber
 import io.foxcapades.lib.json4k.JsonNumeric
@@ -15,5 +16,13 @@ internal sealed class JsonInt<T : NumericNode>(raw: T)
       is JsonNumber  -> raw.decimalValue().compareTo(other.bigDecValue())
       else           -> throw IllegalArgumentException()
     }
+  }
+
+  override fun ifIntegral(action: JsonInteger.() -> Unit) {
+    this.action()
+  }
+
+  override fun ifNumeric(action: JsonNumeric.() -> Unit) {
+    this.action()
   }
 }

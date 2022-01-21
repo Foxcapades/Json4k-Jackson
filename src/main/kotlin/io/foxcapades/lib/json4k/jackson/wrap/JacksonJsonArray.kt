@@ -262,4 +262,7 @@ internal class JacksonJsonArray(raw: ArrayNode)
   override fun withIf(condition: Bool, action: JsonArray.() -> Unit) =
     if (condition) this.action() else Unit
 
+  override fun ifArray(action: JsonArray.() -> Unit) {
+    action(this)
+  }
 }

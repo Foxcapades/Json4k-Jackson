@@ -177,4 +177,8 @@ internal class JacksonJsonObject(raw: ObjectNode)
       false
     ).map { it.key to nodeToElement(it.value) as JsonElement }.iterator()
   }
+
+  override fun ifObject(action: JsonObject.() -> Unit) {
+    action(this)
+  }
 }

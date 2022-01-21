@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "io.foxcapades.lib"
-version = "1.2.0"
+version = "1.3.0"
 
 repositories {
   mavenCentral()
@@ -16,7 +16,7 @@ repositories {
 dependencies {
   implementation(kotlin("stdlib"))
   implementation(kotlin("stdlib-jdk8"))
-  implementation("io.foxcapades.lib:json4k:1.2.0")
+  implementation("io.foxcapades.lib:json4k:1.3.0")
   implementation("com.fasterxml.jackson.core:jackson-databind:2.13.1")
 
 

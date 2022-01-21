@@ -28,4 +28,8 @@ internal class JacksonJsonString(raw: TextNode)
   }
 
   override fun stringValue(): String = raw.textValue()
+
+  override fun ifString(action: JsonString.() -> Unit) {
+    action(this)
+  }
 }

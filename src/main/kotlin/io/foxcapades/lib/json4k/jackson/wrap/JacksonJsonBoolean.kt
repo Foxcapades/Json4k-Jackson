@@ -10,4 +10,8 @@ internal class JacksonJsonBoolean(raw: BooleanNode)
   override val type = JsonElementType.Boolean
 
   override fun booleanValue() = raw.booleanValue()
+
+  override fun ifBoolean(action: JsonBoolean.() -> Unit) {
+    action(this)
+  }
 }
