@@ -7,6 +7,15 @@ import java.math.BigDecimal
 internal class JacksonJsonBigDec(raw: DecimalNode)
   : JsonNumber<DecimalNode>(raw)
 {
+  override val isIntegral by lazy {
+    try {
+      raw.decimalValue().toBigIntegerExact()
+      true
+    } catch (e: ArithmeticException) {
+      false
+    }
+  }
+
   override fun bigDecValue(): BigDecimal = raw.decimalValue()
 
   override fun doubleValue() =

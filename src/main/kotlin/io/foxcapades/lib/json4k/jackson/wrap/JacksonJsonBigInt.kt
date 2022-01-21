@@ -24,6 +24,8 @@ internal class JacksonJsonBigInt(raw: BigIntegerNode)
     val MaxULong: BigInteger get() = BigInteger("18446744073709551615")
   }
 
+  override val isIntegral = true
+
   override val type = JsonElementType.Integer
 
   override fun bigIntValue(): BigInteger = raw.bigIntegerValue()

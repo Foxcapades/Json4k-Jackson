@@ -9,6 +9,8 @@ import java.math.BigInteger
 internal class JacksonJsonShort(raw: ShortNode)
   : JsonInt<ShortNode>(raw), JsonInteger
 {
+  override val isIntegral = true
+
   override val type = JsonElementType.Integer
 
   override fun bigIntValue(): BigInteger = raw.bigIntegerValue()
