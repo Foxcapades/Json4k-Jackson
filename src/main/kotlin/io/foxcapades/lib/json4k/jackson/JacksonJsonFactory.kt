@@ -47,7 +47,7 @@ class JacksonJsonFactory : JsonFactory {
   override fun newInt(value: UShort): JsonInteger =
     JacksonJsonInt(value.toJson())
 
-  override fun newNull(): JsonNull = JacksonJsonNull()
+  override fun newNull(): JsonNull = JacksonJsonNull
 
   override fun newNumber(value: BigDecimal): JsonNumber =
     JacksonJsonBigDec(value.toJson())
@@ -78,7 +78,7 @@ class JacksonJsonFactory : JsonFactory {
       JsonNodeType.ARRAY   -> JacksonJsonArray(tmp as ArrayNode)
       JsonNodeType.BINARY  -> JacksonJsonBinary(tmp as BinaryNode)
       JsonNodeType.BOOLEAN -> JacksonJsonBoolean(tmp as BooleanNode)
-      JsonNodeType.NULL    -> JacksonJsonNull()
+      JsonNodeType.NULL    -> JacksonJsonNull
       JsonNodeType.NUMBER  -> when {
         tmp.isIntegralNumber -> JacksonJsonBigInt(BigIntegerNode(tmp.bigIntegerValue()))
         else                 -> JacksonJsonBigDec(DecimalNode(tmp.decimalValue()))
